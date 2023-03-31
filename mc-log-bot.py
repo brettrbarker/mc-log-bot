@@ -31,31 +31,6 @@ def send_webhook_message(message):
     else:
         print(f'Error {response.status_code}: {response.text}')
 
-# # ATTEMPT 1
-# while True:
-#     try:
-#         print("Starting Tail of log")
-#     # Define a function to handle log file updates
-#         for line in tailer.follow(open(log_file, 'r')):
-#             print("Debug: ",line)
-#             # Check if a player joined or left the server
-#             if 'joined the game' in line or 'left the game' in line:
-#                 # Extract the player name from the log line
-#                 player_name = line.split(' ')[-4].strip()
-
-#                 # Construct the message to send to the webhook
-#                 message = f'{player_name} has {("joined" if "joined" in line else "left")} the server!'
-
-#                 # Send the message to the webhook
-#                 send_webhook_message(message)
-#     except:
-#         print('Error: Follow script crashed. Waiting 5 minutes')
-# #        message = "Oops. Bot Crashed. Waiting 5 minutes and trying again..."
-# #        send_webhook_message(message)
-#         time.sleep(300)
-
-
-# ATTEMPT 2
 while True:
     print('Debug: Starting. Setting initial file size to 0.')
     file_size = 0
@@ -91,27 +66,3 @@ while True:
         time.sleep(10)
         f.close()
     f.close()
-
-# # ATTEMPT 3
-# while True:
-#     try:
-#         while True:
-#             print("running process...")
-#             line = subprocess.check_output(['tail', '-1', log_file])
-#             if line:
-#                 print("LINE HAS BEEN FOUND. TESTING. ###############################")
-#                 if 'joined the game' in line or 'left the game' in line:
-#                     print('Debug: Player joined/left the game!')
-#                     #  Extract the player name from the log line
-#                     player_name = line.split(' ')[-4].strip()
-
-#                     # Construct the message to send to the webhook
-#                     message = f'{player_name} has {("joined" if "joined" in line else "left")} the server!'
-
-#                     # Send the message to the webhook
-#                     send_webhook_message(message)
-#                 print("Debug: ", line)
-#             time.sleep(1)
-#     except:
-#         print('Error: Follow script crashed. Sleeping 10 seconds. Server likely restarting and log file is being rotated.')
-#         time.sleep(10)
