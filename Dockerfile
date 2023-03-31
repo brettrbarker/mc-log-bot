@@ -3,7 +3,7 @@ FROM python:3.9-slim-buster
 # Install dependencies
 RUN apt-get update && \
     apt-get install -y git && \
-    pip install requests tailer 
+    pip install requests 
 
 # Copy bot script into container
 WORKDIR /app

@@ -1,6 +1,5 @@
 import requests
 import json
-import tailer
 import time
 import os
 import subprocess
