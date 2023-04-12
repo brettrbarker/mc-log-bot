@@ -4,6 +4,8 @@ import time
 import os
 import subprocess
 
+# Updated on: 2023-04-11
+
 # Replace this with your own webhook URL
 webhook_url = ''
 log_file = 'logs/latest.log'
@@ -38,7 +40,7 @@ while True:
         while True:
             line = f.readline()
             if line:
-                if 'joined the game' in line or 'left the game' in line:
+                if ('joined the game' in line or 'left the game' in line) and not ': <' in line:
                     print('Debug: Player joined/left the game!')
                     #  Extract the player name from the log line
                     player_name = line.split(' ')[-4].strip()
