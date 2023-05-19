@@ -3,12 +3,22 @@ import json
 import time
 import os
 import subprocess
+from dotenv import load_dotenv
 
 # Updated on: 2023-04-11
 
-# Replace this with your own webhook URL
-webhook_url = ''
-log_file = 'logs/latest.log'
+# Load the webhook URL from the .env file
+load_dotenv('.env')
+webhook_url = os.getenv('WEBHOOK_URL')
+log_file = os.getenv('LOG_FILE')
+
+# Check if variables are set in .env file
+if webhook_url == None:
+    print('Error: WEBHOOK_URL not set in .env file. Exiting.')
+    exit()
+if log_file == None:
+    print('Error: LOG_FILE not set in .env file. Exiting.')
+    exit()
 
 # Define the message content and other parameters
 username = 'Minecraft Server'
